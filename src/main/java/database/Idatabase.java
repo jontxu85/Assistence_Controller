@@ -10,13 +10,13 @@ import modelos.Empleado;
 public interface Idatabase {
 	//metodos para empleado
 		public void addEmpleado(Empleado emp);
-		public void updateEmpleado(String dni);
+		public void updateEmpleado(Empleado emp);
 		public void deleteEmpleado(String dni);
 		
 		
 		//metodos para contrato
 		public void addContrato(Contrato c);
-		public void updateContrato(String dni);
+		public void updateContrato(Contrato c);
 		public void deleteContrato(String dni);
 		
 		//metodos consultas

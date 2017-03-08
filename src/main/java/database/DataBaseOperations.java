@@ -8,15 +8,16 @@ import java.util.List;
 
 import modelos.Contrato;
 import modelos.Empleado;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 
 
 public class DataBaseOperations implements Idatabase {
-	private DatabaseConexion op;
-	private Connection con;
-	
 	public DataBaseOperations() {
-		op=new DatabaseConexion();
+		new DatabaseConexion();
 		
 	}
 
@@ -26,81 +27,157 @@ public class DataBaseOperations implements Idatabase {
 		
 		// TODO Auto-generated method stub
 		
-			con= op.getConexion();
-			Statement st;
-			try {
-				st = con.createStatement();
-				String Query = "INSERT INTO  empleado (Nombre,Apellidos,Dni,Telefono,e-mail,Fecha Nacimiento,password,departamento)"
-						+ " VALUES (emp.getElementById("Nombre"),emp.getElementById("Apellidos"),emp.getElementById("Dni"),"
-								+ "emp.getElementById("Telefono"),emp.getElementById("e-mail"),emp.getElementById("Fecha Nacimiento"),"
-								+ "emp.getElementById("password"),emp.getElementById("departamento")) ";
-                
-		         st.executeUpdate(Query);
-		         con.close();
-		        
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            
+			
+			
+			 EntityManagerFactory emf = Persistence.createEntityManagerFactory("Empleado");
+			 EntityManager em = emf.createEntityManager();
+			 try {
+			 em.getTransaction().begin();
+			 em.persist(emp);
+			 em.getTransaction().commit();
+			 } catch (Exception e) {
+			 
+			 e.printStackTrace();
+			 }finally {
+			 em.close();
+			 
+			 }
+			 
+			 }
 
-	}
+	
 
-	public void updateEmpleado(String dni) {
+
+
+	public void updateEmpleado(Empleado emp) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+
 
 	public void deleteEmpleado(String dni) {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Empleado");
+		 EntityManager em = emf.createEntityManager();
+		Empleado e=em.find( Empleado.class, dni );
+	      em.remove( e );
+	      em.getTransaction( ).commit( );
+	      em.close( );
+	      emf.close( );
 	}
+
+
 
 	public void addContrato(Contrato c) {
 		// TODO Auto-generated method stub
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Contrato");
+		 EntityManager em = emf.createEntityManager();
+		 try {
+		 em.getTransaction().begin();
+		 em.persist(c);
+		 em.getTransaction().commit();
+		 } catch (Exception e) {
+		 
+		 e.printStackTrace();
+		 }finally {
+		 em.close();
+		 
+		 }
+		 
+		 }
+		
+	
 
-	}
-
-	public void updateContrato(String dni) {
+	public void updateContrato(Contrato c) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+
 
 	public void deleteContrato(String dni) {
 		// TODO Auto-generated method stub
-
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Contrato");
+		 EntityManager em = emf.createEntityManager();
+		Contrato c=em.find( Contrato.class, dni );
+	      em.remove( c );
+	      em.getTransaction( ).commit( );
+	      em.close( );
+	      emf.close( );
 	}
+
+
 
 	public Empleado consultarEmpleado(String dni) {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "Empleado" );
+	      EntityManager em = emf.createEntityManager();
+	      
+	      Empleado e = em.find( Empleado.class, dni );
+	      em.close();
+	      return e;
+	 
+	      
+		
 	}
-
 	public Contrato consultarContrato(String dni) {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManagerFactory emf= Persistence.createEntityManagerFactory( "Contrato" );
+	      EntityManager em = emf.createEntityManager();
+	      
+	      //Between
+	      
+	      Contrato c=em.find(Contrato.class, dni);
+	      em.close();
+	      return c;
+		
 	}
+
+
 
 	public List<Empleado> getAllEmpleados() {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Empleado" );
+	      EntityManager entitymanager = emfactory.createEntityManager();
+	      
+	      //Between
+	      Query query = entitymanager.createQuery( "Select e " + "from Empleado e " + "ORDER BY e.Dni ASC" );
+	      List<Empleado> list=(List<Empleado>)query.getResultList();
+	      return list;
 	}
+
+
 
 	public List<Empleado> getDptoEmpleados(String dpto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
+
 	public List<Contrato> getAllContratos() {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Contrato" );
+	      EntityManager entitymanager = emfactory.createEntityManager();
+	      
+	      //Between
+	      Query query = entitymanager.createQuery( "Select c " + "from Contrato c " + "ORDER BY c.dniCont ASC" );
+	      List<Contrato> list=(List<Contrato>)query.getResultList();
+	      return list;
 	}
+
+
 
 	public List<Contrato> getAllDuracion(String duracion) {
 		// TODO Auto-generated method stub
-		return null;
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Contrato" );
+	      EntityManager entitymanager = emfactory.createEntityManager();
+	      
+	      //Between
+	      Query query = entitymanager.createQuery( "Select c " + "from Contrato c " + "ORDER BY c.dniCont ASC" );
+	      List<Contrato> list=(List<Contrato>)query.getResultList();
+	      return list;
 	}
 
 }
-
-
