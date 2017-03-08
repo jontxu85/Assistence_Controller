@@ -20,6 +20,9 @@
 				    <version>1.0.1.Final</version>
 	  		</dependency>
 	  </dependencies> 
+	  <properties>
+   		 <failOnMissingWebXml>false</failOnMissingWebXml>
+	   </properties>
   <build>
     <finalName>index.jsp</finalName>
   </build>

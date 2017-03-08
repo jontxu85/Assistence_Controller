@@ -2,6 +2,9 @@ package database;
 
 import java.util.List;
 
+import modelos.Contrato;
+import modelos.Empleado;
+
 
 
 public interface Idatabase {
