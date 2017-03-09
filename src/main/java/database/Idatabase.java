@@ -10,7 +10,7 @@ import modelos.Empleado;
 public interface Idatabase {
 	//metodos para empleado
 		public void addEmpleado(Empleado emp);
-		public void updateEmpleado(Empleado emp);
+		public void updatePassword(String dni,String password);
 		public void deleteEmpleado(String dni);
 		
 		

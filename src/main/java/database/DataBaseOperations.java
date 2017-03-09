@@ -1,9 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.List;
 
 import modelos.Contrato;
@@ -29,7 +26,7 @@ public class DataBaseOperations implements Idatabase {
 		
 			
 			
-			 EntityManagerFactory emf = Persistence.createEntityManagerFactory("Empleado");
+			 EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
 			 EntityManager em = emf.createEntityManager();
 			 try {
 			 em.getTransaction().begin();
@@ -40,7 +37,7 @@ public class DataBaseOperations implements Idatabase {
 			 e.printStackTrace();
 			 }finally {
 			 em.close();
-			 
+			 emf.close();
 			 }
 			 
 			 }
@@ -49,16 +46,28 @@ public class DataBaseOperations implements Idatabase {
 
 
 
-	public void updateEmpleado(Empleado emp) {
+	public void updatePassword(String dni,String password) {
 		// TODO Auto-generated method stub
-		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
+		 EntityManager em = emf.createEntityManager();
+		 em.getTransaction().begin();
+		Empleado e=em.find( Empleado.class, dni );
+		 //before update
+	      System.out.println( e);
+	      e.setPassword(password);
+	      em.getTransaction( ).commit( );
+	      
+	      //after update
+	      System.out.println( e );
+	      em.close();
+	      emf.close();
 	}
 
 
 
 	public void deleteEmpleado(String dni) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Empleado");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
 		 EntityManager em = emf.createEntityManager();
 		Empleado e=em.find( Empleado.class, dni );
 	      em.remove( e );
@@ -71,7 +80,7 @@ public class DataBaseOperations implements Idatabase {
 
 	public void addContrato(Contrato c) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Contrato");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
 		 EntityManager em = emf.createEntityManager();
 		 try {
 		 em.getTransaction().begin();
@@ -82,7 +91,7 @@ public class DataBaseOperations implements Idatabase {
 		 e.printStackTrace();
 		 }finally {
 		 em.close();
-		 
+		 emf.close();
 		 }
 		 
 		 }
@@ -91,14 +100,26 @@ public class DataBaseOperations implements Idatabase {
 
 	public void updateContrato(Contrato c) {
 		// TODO Auto-generated method stub
-		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
+		 EntityManager em = emf.createEntityManager();
+		 em.getTransaction().begin();
+		Empleado e=em.find( Empleado.class, c.getDniCont() );
+		 //before update
+	      System.out.println( e);
+	      e.setContrato(c);
+	      em.getTransaction( ).commit( );
+	      
+	      //after update
+	      System.out.println( e );
+	      em.close();
+	      emf.close();
 	}
 
 
 
 	public void deleteContrato(String dni) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("Contrato");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
 		 EntityManager em = emf.createEntityManager();
 		Contrato c=em.find( Contrato.class, dni );
 	      em.remove( c );
@@ -111,11 +132,12 @@ public class DataBaseOperations implements Idatabase {
 
 	public Empleado consultarEmpleado(String dni) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "Empleado" );
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "enterprise" );
 	      EntityManager em = emf.createEntityManager();
 	      
 	      Empleado e = em.find( Empleado.class, dni );
 	      em.close();
+	      emf.close();
 	      return e;
 	 
 	      
@@ -123,13 +145,14 @@ public class DataBaseOperations implements Idatabase {
 	}
 	public Contrato consultarContrato(String dni) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory( "Contrato" );
+		EntityManagerFactory emf= Persistence.createEntityManagerFactory( "enterprise" );
 	      EntityManager em = emf.createEntityManager();
 	      
 	      //Between
 	      
 	      Contrato c=em.find(Contrato.class, dni);
 	      em.close();
+	      emf.close();
 	      return c;
 		
 	}
@@ -138,12 +161,14 @@ public class DataBaseOperations implements Idatabase {
 
 	public List<Empleado> getAllEmpleados() {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Empleado" );
-	      EntityManager entitymanager = emfactory.createEntityManager();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "enterprise" );
+	      EntityManager em = emf.createEntityManager();
 	      
 	      //Between
-	      Query query = entitymanager.createQuery( "Select e " + "from Empleado e " + "ORDER BY e.Dni ASC" );
+	      Query query = em.createQuery( "Select e " + "from Empleado e " + "ORDER BY e.Dni ASC" );
 	      List<Empleado> list=(List<Empleado>)query.getResultList();
+	      em.close();
+	      emf.close();
 	      return list;
 	}
 
@@ -158,7 +183,7 @@ public class DataBaseOperations implements Idatabase {
 
 	public List<Contrato> getAllContratos() {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Contrato" );
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "enterprise" );
 	      EntityManager entitymanager = emfactory.createEntityManager();
 	      
 	      //Between
@@ -171,7 +196,7 @@ public class DataBaseOperations implements Idatabase {
 
 	public List<Contrato> getAllDuracion(String duracion) {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Contrato" );
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "enterprise" );
 	      EntityManager entitymanager = emfactory.createEntityManager();
 	      
 	      //Between
