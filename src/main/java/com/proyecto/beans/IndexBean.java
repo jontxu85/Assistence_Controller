@@ -16,7 +16,7 @@ import service.EmpleadoService;
 public class IndexBean implements Serializable {
 
 	private static final long serialVersionUID = -4901741514584007341L;
-	private EmpleadoService actorService = new EmpleadoService();
+	private EmpleadoService es = new EmpleadoService();
 	private String username;
 	private String password;
 	
@@ -26,6 +26,12 @@ public class IndexBean implements Serializable {
 	public void init() {
 		username = "";
 		password = "";
+	}
+	
+	public boolean login(){
+		boolean logueado=es.hacerLogin(username, password);
+		
+		return logueado;
 	}
 	
 	public String getUsername() {
