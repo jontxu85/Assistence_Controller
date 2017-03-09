@@ -15,32 +15,25 @@ public class Contrato implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String dniCont;
+	@Column(name="id_contrato")
+	private int idContrato;
 
 	private int base;
 
 	private int bonus;
 
-	private String departamento;
-
 	@Temporal(TemporalType.DATE)
-	private Date fechaInicio;
-
-	//bi-directional one-to-one association to Empleado
-	@OneToOne
-	@JoinColumn(name="DniCont")
-	private Empleado empleado;
+	private Date fechaIncio;
 
 	public Contrato() {
 	}
 
-	public String getDniCont() {
-		return this.dniCont;
+	public int getIdContrato() {
+		return this.idContrato;
 	}
 
-	public void setDniCont(String dniCont) {
-		this.dniCont = dniCont;
+	public void setIdContrato(int idContrato) {
+		this.idContrato = idContrato;
 	}
 
 	public int getBase() {
@@ -59,28 +52,12 @@ public class Contrato implements Serializable {
 		this.bonus = bonus;
 	}
 
-	public String getDepartamento() {
-		return this.departamento;
+	public Date getFechaIncio() {
+		return this.fechaIncio;
 	}
 
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
-	}
-
-	public Date getFechaInicio() {
-		return this.fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Empleado getEmpleado() {
-		return this.empleado;
-	}
-
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
+	public void setFechaIncio(Date fechaIncio) {
+		this.fechaIncio = fechaIncio;
 	}
 
 }
