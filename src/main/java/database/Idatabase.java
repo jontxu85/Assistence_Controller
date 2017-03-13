@@ -16,7 +16,7 @@ public interface Idatabase {
 		
 		//metodos para contrato
 		public void addContrato(Contrato c);
-		public void updateContrato(Contrato c);
+		public void updateContrato(Contrato c,String dni);
 		public void deleteContrato(String dni);
 		
 		//metodos consultas

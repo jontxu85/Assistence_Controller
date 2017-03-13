@@ -98,19 +98,24 @@ public class DataBaseOperations implements Idatabase {
 		
 	
 
-	public void updateContrato(Contrato c) {
+	public void updateContrato(Contrato c2,String dni) {
 		// TODO Auto-generated method stub
+		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterprise");
 		 EntityManager em = emf.createEntityManager();
 		 em.getTransaction().begin();
-		Empleado e=em.find( Empleado.class, c.getDniCont() );
+		 Contrato c=consultarContrato(dni);
+		 
 		 //before update
-	      System.out.println( e);
-	      e.setContrato(c);
+	      
+	      c.setBase(c2.getBase());
+	      c.setBonus(c2.getBonus());
+	      c.setFechaIncio(c2.getFechaIncio());
+	      
 	      em.getTransaction( ).commit( );
 	      
 	      //after update
-	      System.out.println( e );
+	      System.out.println( c2 );
 	      em.close();
 	      emf.close();
 	}
