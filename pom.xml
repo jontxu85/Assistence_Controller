@@ -12,6 +12,17 @@
 			      <version>3.8.1</version>
 			      <scope>test</scope>
 		    </dependency>
+		  
+			<dependency>
+			  <groupId>com.sun.faces</groupId>
+			  <artifactId>jsf-impl</artifactId>
+			  <version>2.1.13</version>
+			</dependency>
+			<dependency>
+			  <groupId>javax.servlet</groupId>
+			  <artifactId>javax.servlet-api</artifactId>
+			  <version>3.0.1</version>
+			</dependency>
 		   
 			<dependency>
 			    <groupId>org.hibernate.javax.persistence</groupId>
@@ -51,8 +62,16 @@
    		 <maven.compiler.target>1.8</maven.compiler.target>
    		 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	  </properties>
+	  <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <packagingExcludes>WEB-INF/lib/javaee-web-api*.jar</packagingExcludes>
+                </configuration>
+            </plugin>
   <build>
-    <finalName>index.jsp</finalName>
+    <finalName>loginPage.xhtml</finalName>
   </build>
   <artifactId>Enterprise_APP</artifactId>
 </project>
