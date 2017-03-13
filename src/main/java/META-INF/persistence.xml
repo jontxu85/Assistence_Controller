@@ -4,23 +4,23 @@
       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
        version="2.0">
  
-       <persistence-unit name="enterpriseManager">
+       <persistence-unit name="enterpriseManager" transaction-type="RESOURCE_LOCAL">
              
              <provider>org.hibernate.ejb.HibernatePersistence</provider>
- 
-             <class>com.mrbool.model.User</class>  
+             <class>modelos.Asistencia</class>
+             <class>modelos.AsistenciaPK</class>
+             <class>modelos.Contrato</class>
+             <class>modelos.Empleado</class>
+             <class>modelos.JefePK</class>
+             <class>modelos.Jefe</class> 
              <properties>
              
                    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />                    
                    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.1.61/enterprise" />
                    <property name="javax.persistence.jdbc.user" value="josu" />
                    <property name="javax.persistence.jdbc.password" value="admin" />
- 
-                   <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />                    
-                   <property name="hibernate.show_sql" value="true" />
-                   <property name="hibernate.format_sql" value="true" />
- 
-                   <property name="hibernate.hbm2ddl.auto" value="update" />  
+                   <property name="eclipselink.logging.level" value="FINE"/>
+                   <property name="eclipselink.ddl-generation" value="create-tables"/>  
              </properties>
        </persistence-unit>
  </persistence>
