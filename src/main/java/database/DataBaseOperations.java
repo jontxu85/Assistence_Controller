@@ -17,7 +17,23 @@ public class DataBaseOperations implements Idatabase {
 		new DatabaseConexion();
 		
 	}
-
+	public String hacerLogin(String dni,String password){
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("enterpriseManager");
+		 EntityManager em = emf.createEntityManager();
+		 
+		 Empleado emp = new Empleado();
+		 emp=consultarEmpleado(dni);
+		 
+		 if(emp==null){
+			 return emp;
+		 }else if(emp.getPassword==password){
+			 return "http://www.marca.com";
+		 }else{
+			 return null;
+		 }
+		 
+	}
 	
 
 	public void addEmpleado(Empleado emp) {
@@ -148,6 +164,12 @@ public class DataBaseOperations implements Idatabase {
 	      
 		
 	}
+	
+		
+	 
+	      
+		
+	
 	public Contrato consultarContrato(String dni) {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emf= Persistence.createEntityManagerFactory( "enterpriseManager" );

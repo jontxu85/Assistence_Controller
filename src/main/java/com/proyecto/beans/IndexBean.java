@@ -28,8 +28,8 @@ public class IndexBean implements Serializable {
 		password = "";
 	}
 	
-	public boolean login(){
-		boolean logueado=es.hacerLogin(username, password);
+	public String login(){
+		String logueado=es.hacerLogin(username, password);
 		
 		return logueado;
 	}
