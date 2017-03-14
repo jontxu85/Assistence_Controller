@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
 <link rel="stylesheet" href="css/style.css"/>	
@@ -14,8 +13,9 @@
 		<h:panelGrid columns="2">
 			<h:inputText id="username" placeholder="Usuario" required="" value="#{IndexBean.UserName}" />
 			<h:password id="password" placeholder="Contraseña" required="" value="#{IndexBean.Password}" />
-			<h:commandButton value="Acceder" class="button" action="#{IndexBean.login}"></h:commandButton>
+			<h:commandButton value="Acceder" id="botonLogin" action="#{IndexBean.login}"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
 </body>
 </html>
+
