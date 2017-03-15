@@ -8,6 +8,9 @@ import modelos.Empleado;
 
 
 public interface Idatabase {
+	//Login
+	public String hacerLogin(String dni,String password);
+	
 	//metodos para empleado
 		public void addEmpleado(Empleado emp);
 		public void updatePassword(String dni,String password);
