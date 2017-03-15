@@ -1,20 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-<link rel="stylesheet" href="css/style.css"/>	
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css"  href="css/estilos.css" />	
 </h:head>
+
 <body>
-	<h:form>
+	<h:form id="formulario">
 		<h1>Iniciar sesión</h1>
-		<h:panelGrid columns="2">
-			<h:inputText id="username" placeholder="Usuario" required="" value="#{IndexBean.UserName}" />
-			<h:password id="password" placeholder="Contraseña" required="" value="#{IndexBean.Password}" />
+		
+			<h:inputText id="username" placeholder="Usuario" required="" value="#{IndexBean.Username}" />
+			<h:inputSecret id="password" placeholder="Contraseña" required="" value="#{IndexBean.Password}"/>
 			<h:commandButton value="Acceder" id="botonLogin" action="#{IndexBean.login}"></h:commandButton>
-		</h:panelGrid>
+		
 	</h:form>
 </body>
 </html>

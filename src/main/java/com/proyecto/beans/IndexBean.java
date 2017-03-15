@@ -43,7 +43,7 @@ public class IndexBean implements Serializable {
 	}
 	
 	public String getPassword() {
-		return username;
+		return password;
 	}
 
 	public void setPassword(String password) {
