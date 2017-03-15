@@ -17,20 +17,21 @@ public class IndexBean implements Serializable {
 
 	private static final long serialVersionUID = -4901741514584007341L;
 	private EmpleadoService es = new EmpleadoService();
-	private String username;
+	private String dni;
 	private String password;
 	
 	
 
 	@PostConstruct
 	public void init() {
-		username = "";
+		dni = "";
 		password = "";
 	}
 	
 	public String login(){
-		String logueado=es.hacerLogin(username, password);
-		
+		System.out.println("entra");
+		String logueado=es.hacerLogin(dni, password);
+		System.out.println("sale");
 		return logueado;
 	}
 	
@@ -38,12 +39,12 @@ public class IndexBean implements Serializable {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String dni) {
+		this.dni = dni;
 	}
 	
 	public String getPassword() {
-		return username;
+		return dni;
 	}
 
 	public void setPassword(String password) {

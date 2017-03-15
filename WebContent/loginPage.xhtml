@@ -1,21 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-<link rel="stylesheet" href="css/style.css"/>	
-</h:head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 	xmlns:spring="http://www.springframework.org/tags" -->
+<!-- 	xmlns:c="http://java.sun.com/jsf/core" -->
+<!-- 	xmlns:form="http://www.springframework.org/tags/form"> -->
+<head>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</head>
 <body>
-	<h:form>
-		<h1>Iniciar sesión</h1>
-		<h:panelGrid columns="2">
-			<h:inputText id="username" placeholder="Usuario" required="" value="#{IndexBean.UserName}" />
-			<h:password id="password" placeholder="Contraseña" required="" value="#{IndexBean.Password}" />
-			<h:commandButton value="Acceder" id="botonLogin" action="#{IndexBean.login}"></h:commandButton>
-		</h:panelGrid>
-	</h:form>
+   <form action="${contextPath/IndexBean.login}/">
+        <h2>Log in</h2>
+            
+            <input name="dni" type="text"  placeholder="DNI"/>
+            <input name="password" type="password" placeholder="Password"/>
+                  
+
+            <button type="submit">Log In</button>
+          
+      
+
+    </form>
 </body>
 </html>
 
