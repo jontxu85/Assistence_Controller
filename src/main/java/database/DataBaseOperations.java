@@ -26,8 +26,8 @@ public class DataBaseOperations implements Idatabase {
 		 emp=consultarEmpleado(dni);
 		 
 		 if(emp==null){
-			 return emp;
-		 }else if(emp.getPassword==password){
+			 return null;
+		 }else if(emp.getPassword()==password){
 			 return "http://www.marca.com";
 		 }else{
 			 return null;
