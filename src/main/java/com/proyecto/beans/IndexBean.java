@@ -20,7 +20,9 @@ public class IndexBean implements Serializable {
 	private String username;
 	private String password;
 	
-	
+	public IndexBean (){
+		
+	}
 
 	@PostConstruct
 	public void init() {

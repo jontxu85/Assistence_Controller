@@ -6,13 +6,14 @@ background-repeat:no-repeat;
 background-size:100%;
 }
 
-#username {
+#usuario {
 	background-position: 10px 10px !important ;
 	width:5%;
 	height:50px;
 	
 }
-h:form #formulario{
+
+#formulario{
 	height: 300px;
 }
 #panel{

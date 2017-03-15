@@ -1,9 +1,8 @@
 <!DOCTYPE HTML>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -11,12 +10,13 @@
 </h:head>
 
 <body>
+	<h1>Iniciar sesión</h1>
 	<h:form id="formulario">
-		<h1>Iniciar sesión</h1>
 		
-			<h:inputText id="username" placeholder="Usuario" required="" value="#{IndexBean.Username}"/>
-			<h:inputSecret id="password" placeholder="Contraseña" required="" value="#{IndexBean.Password}"/>
-			<h:commandButton value="Acceder" id="botonLogin" action="#{IndexBean.login}"></h:commandButton>
+			
+			<p:inputText id="usuario" required="" value="#{IndexBean.UserName}" />
+			<p:inputSecret id="password" required="" value="#{IndexBean.Password}"/>
+			<p:commandButton value="Acceder" id="botonLogin" value="#{IndexBean.login}" ></p:commandButton>
 		
 	</h:form>
 </body>
